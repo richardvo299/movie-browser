@@ -8,7 +8,8 @@ const PublicNavbar = () => {
         RICKFLIX
       </Link>
       <Link to="/">Now Playing</Link>
-      <Link to="/movie/top_rated">Top Rated</Link>
+      <Link to="/movies/top_rated">Top Rated</Link>
+      <Link to="/movies/upcoming">Upcoming</Link>
     </div>
   );
 };

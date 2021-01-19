@@ -14,7 +14,7 @@ const TMDB_URL = "https://www.themoviedb.org/movie/";
 const MovieDetailPage = () => {
   const [movie, setMovie] = useState(null);
   const { id } = useParams();
-  const [video, setVideo] = useState([]);
+  const [video, setVideo] = useState({});
   // const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -40,7 +40,9 @@ const MovieDetailPage = () => {
       const url = `${API_URL}/movie/${id}/videos?api_key=${API_KEY}`;
       const response = await fetch(url);
       const data = await response.json();
-      setVideo(data.results);
+      setVideo(data.results[0]);
+      console.log("video");
+      console.log(data);
     }
     fetchData();
   }, [id]);
@@ -74,7 +76,7 @@ const MovieDetailPage = () => {
             See More
           </a>
           {/* ------------------ */}
-          {/* <div>
+          <div>
             <Button variant="primary" onClick={handleShow}>
               View Trailer
             </Button>
@@ -83,12 +85,10 @@ const MovieDetailPage = () => {
                 <Modal.Title>Trailer</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                {video.map((v) => (
-                  <YouTube video={`${v.key}`} autoplay />
-                ))}
+                <YouTube video={video.key} autoplay />
               </Modal.Body>
             </Modal>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
