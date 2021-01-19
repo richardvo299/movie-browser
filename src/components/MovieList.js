@@ -20,7 +20,6 @@ const MovieList = ({ title, poster_path, overview, vote_average, id }) => {
     <div className="movie">
       <img src={linkToImage} alt={title} />
       <span className={`tag ${setVoteClass(vote_average)}`}>
-        {" "}
         <span class="fa fa-star checked"></span> {vote_average}
       </span>
       <div className="movie-info">
